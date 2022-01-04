@@ -1,0 +1,8 @@
+# Build
+FROM golang:1.17-alpine
+RUN apk --no-cache add git build-base bind-tools ca-certificates
+ENV GO111MODULE on
+RUN GO111MODULE=on go get -u github.com/jaeles-project/gospider
+RUN ln -s /root/go/bin/gospider /usr/local/bin/gospider
+
+ENTRYPOINT ["gospider"]
